@@ -22,7 +22,6 @@ module.exports = {
                 ]);
 
         response.header('X-Total-Count', count['count(*)']);
-
         return response.json(incidents);
     },
 
@@ -37,6 +36,7 @@ module.exports = {
             ong_id
         });
         
+        console.log(response.json({ id }))
         return response.json({ id });
     },
 

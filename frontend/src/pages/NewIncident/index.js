@@ -10,7 +10,7 @@ export default function NewIncident() {
     const [description, setDescription] = useState('');
     const [value, setValue] = useState('');
     const ongId = localStorage.getItem('ongId');
-
+    const history = useHistory();
 
    async function handleNewIncident(e) {
         e.preventDefault();
@@ -26,9 +26,11 @@ export default function NewIncident() {
                 headers: {
                     Authorization: ongId,
                 }
-            })
-            useHistory.pushState('/profile');
+            }).then(response => 
+                history.push('/profile'))
+           
         } catch (error) {
+            console.log(error)
             alert('Erro ao cadastrar caso, tente novamente.')
         }
     }
